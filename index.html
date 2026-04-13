@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KidSketch Adventure</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar card">
+        <div>
+          <h1>🎨 KidSketch Adventure</h1>
+          <p>Draw, color, win stars, and explore fun templates!</p>
+        </div>
+        <div class="starboard" aria-live="polite">
+          <span>⭐ Stars:</span>
+          <strong id="starCount">0</strong>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar card">
+          <h2>Play Mode</h2>
+          <div class="mode-switch" role="tablist" aria-label="Choose play mode">
+            <button id="drawModeBtn" class="active" data-mode="draw">✏️ Draw</button>
+            <button id="colorModeBtn" data-mode="color">🖌️ Color</button>
+          </div>
+
+          <h3>Categories</h3>
+          <div id="categoryList" class="category-list" aria-label="Template categories"></div>
+
+          <h3>Templates</h3>
+          <div id="templateGrid" class="template-grid"></div>
+        </aside>
+
+        <section class="workspace card">
+          <div class="workspace-top">
+            <div>
+              <h2 id="templateTitle">Pick a template</h2>
+              <p id="templateHint">Choose draw or color mode to begin the fun.</p>
+            </div>
+            <div class="actions">
+              <button id="resetBtn" class="secondary">🔄 Reset Template</button>
+              <button id="nextBtn">⏭️ Next Template</button>
+            </div>
+          </div>
+
+          <div id="drawPanel" class="panel active">
+            <div class="panel-grid">
+              <canvas id="guideCanvas" width="720" height="520" aria-label="Guide canvas"></canvas>
+              <canvas id="drawCanvas" width="720" height="520" aria-label="Drawing canvas"></canvas>
+            </div>
+            <p class="status" id="drawStatus">Follow the arrow and draw each stroke.</p>
+          </div>
+
+          <div id="colorPanel" class="panel">
+            <div id="colorCanvas" class="color-canvas" aria-live="polite"></div>
+            <div class="palette-wrap">
+              <p id="colorPrompt" class="status">Pick a color and paint highlighted section.</p>
+              <div id="palette" class="palette"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="celebration" class="celebration" aria-hidden="true"></div>
+
+    <script src="templates.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
